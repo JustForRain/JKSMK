@@ -8,6 +8,7 @@
 #include "sys.h"
 #include "global.h"
 #include "menu.h"
+#include "archive.h"
 #include "titles.h"
 #include "sd_cia.h"
 #include "cart.h"
@@ -29,19 +30,54 @@ int main(int argc, const char * argv[])
 
     hidScanInput();
     u32 held = hidKeysHeld();
+	
     if((held & KEY_R) && (held & KEY_L))
+	{
         devMode = true;
-    else if(held & KEY_R)
-        gatewayMode = true;
+		FS_Archive shared;
+		if(openSharedExt(&shared, 0xf000000b))
+		{
+			Handle coin;
+			FSUSER_OpenFile(&coin, shared, fsMakePath(PATH_ASCII, "/gamecoin.dat"), FS_OPEN_READ | FS_OPEN_WRITE, 0);
 
+			u64 size;
+			FSFILE_GetSize(coin, &size);
+
+			u8 *buff = new u8[size];
+
+			//Read file to buff
+			FSFILE_Read(coin, NULL, 0, buff, size);
+
+			//Overwrite 0x4 and 0x5 with 300
+			unsigned coinAmount = 300;
+			buff[0x4] = coinAmount;
+			buff[0x5] = coinAmount >> 8;
+
+			//write it back
+			FSFILE_Write(coin, NULL, 0, buff, size, FS_WRITE_FLUSH);
+
+			//close gamecoin.dat
+			FSFILE_Close(coin);
+
+			//free memory used by buff
+			delete[] buff;
+
+			FSUSER_CloseArchive(shared);
+		}
+	}
+	else if(held & KEY_R)
+    {
+		gatewayMode = true;
+	}
+	
     if(runningUnder() && !devMode)
         start3dsxMode();
     else
     {
         sdTitlesInit();
         nandTitlesInit();
-
-        std::u32string info = U"JKSMK";
+		
+		std::u32string info = U"JKSMK";
 		
         menu mainMenu(136, 80, false);
         if(!gatewayMode)
