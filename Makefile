@@ -26,13 +26,13 @@ include $(DEVKITARM)/3ds_rules
 #     - icon.png
 #     - <libctru folder>/default_icon.png
 #---------------------------------------------------------------------------------
-TARGET      := JKSM
+TARGET      := JKSMK
 BUILD		:=	build
 SOURCES		:=	source
 DATA		:=	data
 INCLUDES	:=	include
 
-APP_TITLE		:= JKSM (Shiny Edition)
+APP_TITLE		:= JKSMK
 APP_DESCRIPTION	:= Save Manager
 APP_AUTHOR		:= JK & ShinyMK
 
@@ -68,7 +68,7 @@ LIBDIRS	:= $(CTRULIB) $(PORTLIBS)
 ifneq ($(BUILD),$(notdir $(CURDIR)))
 #---------------------------------------------------------------------------------
 
-export OUTPUT	:=	$(CURDIR)/$(TARGET)
+export OUTPUT	:=	$(CURDIR)/output/$(TARGET)
 export TOPDIR	:=	$(CURDIR)
 
 export VPATH	:=	$(foreach dir,$(SOURCES),$(CURDIR)/$(dir)) \
@@ -118,7 +118,7 @@ else
 endif
 
 ifeq ($(strip $(NO_SMDH)),)
-	export _3DSXFLAGS += --smdh=$(CURDIR)/$(TARGET).smdh
+	export _3DSXFLAGS += --smdh=$(OUTPUT).smdh
 endif
 
 .PHONY: $(BUILD) clean all
@@ -128,28 +128,29 @@ all: $(BUILD)
 
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
+	@mkdir -p $(CURDIR)/output
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 #---------------------------------------------------------------------------------
 clean:
 	@echo clean ...
-	@rm -fr $(BUILD) $(TARGET).3dsx $(OUTPUT).smdh $(TARGET).elf $(TARGET)-strip.elf $(TARGET).cia $(TARGET).3ds
+	@rm -fr $(BUILD) $(OUTPUT).3dsx $(OUTPUT).smdh $(OUTPUT).elf $(OUTPUT)-strip.elf $(OUTPUT).cia $(TARGET).3ds
 #---------------------------------------------------------------------------------
 $(TARGET)-strip.elf: $(BUILD)
-	@$(STRIP) $(TARGET).elf -o $(TARGET)-strip.elf
+	@$(STRIP) $(OUTPUT).elf -o $(OUTPUT)-strip.elf
 #---------------------------------------------------------------------------------
 cci: $(TARGET)-strip.elf
-	@makerom -f cci -rsf $(TARGET).rsf -target d -exefslogo -elf $(TARGET)-strip.elf -o $(TARGET).3ds
+	@makerom -f cci -rsf $(TARGET).rsf -target d -exefslogo -elf $(OUTPUT)-strip.elf -o $(TARGET).3ds
 #---------------------------------------------------------------------------------
 cia: $(TARGET)-strip.elf
-	@makerom -f cia -o $(TARGET).cia -elf $(TARGET)-strip.elf -rsf $(TARGET).rsf -exefslogo -target t -icon icon -banner banner
+	@makerom -f cia -o $(OUTPUT).cia -elf $(OUTPUT)-strip.elf -rsf $(TARGET).rsf -exefslogo -target t -icon icon -banner banner
 	@echo Built JKSM.cia
 #---------------------------------------------------------------------------------
 send: $(BUILD)
-	@3dslink $(TARGET).3dsx
+	@3dslink $(OUTPUT).3dsx
 #---------------------------------------------------------------------------------
 run: $(BUILD)
-	@citra $(TARGET).3dsx
+	@citra $(OUTPUT).3dsx
 
 #---------------------------------------------------------------------------------
 else
