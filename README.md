@@ -3,6 +3,7 @@
 [GBATemp Thread](https://gbatemp.net/threads/release-jksmk-quick-compact-save-manager.433204)
 
 Download and Install manually
+
 [https://github.com/ShinyMK/JKSMK/releases/latest](https://github.com/ShinyMK/JKSMK/releases/latest)
 
 Download and Install via/QR Code
