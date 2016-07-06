@@ -15,7 +15,8 @@
 enum
 {
     _expSav,
-    _impSav
+    _impSav,
+    _delSav
 };
 
 void startSaveMenu(FS_Archive saveArch, const titleData dat)
@@ -25,6 +26,7 @@ void startSaveMenu(FS_Archive saveArch, const titleData dat)
     menu saveMenu(128, 80, false);
     saveMenu.addItem("Export Save");
     saveMenu.addItem("Import Save");
+    saveMenu.addItem("Delete Save");
 
     std::u32string info = tou32(dat.name) + U" - Save Data";
 
@@ -52,6 +54,13 @@ void startSaveMenu(FS_Archive saveArch, const titleData dat)
                     break;
                 case _impSav:
                     restoreData(dat, saveArch, MODE_SAVE);
+                    break;
+				case _delSav:
+                    if(confirm("Are you sure you want to delete this title's save data?"))
+                    {
+                        FSUSER_DeleteDirectoryRecursively(saveArch, fsMakePath(PATH_ASCII, "/"));
+                        FSUSER_ControlArchive(saveArch, ARCHIVE_ACTION_COMMIT_SAVE_DATA, NULL, 0, NULL, 0);
+                    }
                     break;
             }
         }

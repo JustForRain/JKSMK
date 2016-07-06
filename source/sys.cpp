@@ -110,15 +110,8 @@ void sysInit()
     createDir("/3ds/data");
     createDir("/3ds/data/JKSV");
 
-    //These are just in case they used an earlier build. Just moves the folders inside /JKSV
-    /*FSUSER_RenameDirectory(sdArch, fsMakePath(PATH_ASCII, "/Saves/"), sdArch, fsMakePath(PATH_ASCII, "/JKSV/Saves/"));
-    FSUSER_RenameDirectory(sdArch, fsMakePath(PATH_ASCII, "/ExtData/"), sdArch, fsMakePath(PATH_ASCII, "/JKSV/ExtData/"));*/
-
     createDir("/3ds/data/JKSV/Saves");
-    createDir("/3ds/data/JKSV/ExtData");
-    createDir("/3ds/data/JKSV/SysSave");
     createDir("/3ds/data/JKSV/Boss");
-    createDir("/3ds/data/JKSV/Shared");
 }
 
 void sysExit()
