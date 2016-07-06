@@ -124,7 +124,7 @@ bool runningUnder()
     APT_GetProgramID(&id);
 
     //check if it's using its own ID
-    if(id==0x0004000002c23200)
+    if(id==0x0004000002c23300)
         return false;
 
     return true;
