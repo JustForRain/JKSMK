@@ -7,9 +7,6 @@
 #include "hbfilter.h"
 #include "util.h"
 
-//These are the homebrew IDs from the gbatemp thread - 3Dsurfer.
-//3DSurfer and Picross E3 use the same ID
-
 std::vector<u32> filterID;
 
 void loadFilterList()

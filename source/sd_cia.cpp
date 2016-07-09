@@ -26,7 +26,7 @@ void sdStartSelect()
     if(sdTitle.size() < 1)
         return;
 
-    menu titleMenu(0, 20, true);
+    menu titleMenu(-30, 20, true);
     for(unsigned i = 0; i < sdTitle.size(); i++)
         titleMenu.addItem(sdTitle[i].name);
 

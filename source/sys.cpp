@@ -16,9 +16,6 @@
 
 extern std::vector<u32> filterID;
 
-//Gets the handle of what it's running under and tries to use it
-//I haven't found a title that works yet. Maybe I'm doing this wrong?
-
 void loadImgs()
 {
     bar = sf2d_create_texture_mem_RGBA8(TopBar.pixel_data, TopBar.width, TopBar.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
@@ -107,11 +104,12 @@ void sysInit()
     }
 
     //Create output directories
+    createDir("/3ds");
     createDir("/3ds/data");
     createDir("/3ds/data/JKSV");
-
     createDir("/3ds/data/JKSV/Saves");
     createDir("/3ds/data/JKSV/Boss");
+	
 }
 
 void sysExit()

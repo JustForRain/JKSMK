@@ -141,12 +141,14 @@ bool backupData(const titleData dat, FS_Archive arch, int mode, bool autoName)
     std::u16string pathOut;
     //holds name from user
     std::u16string slot;
-
-    //if auto, just use date/time
-    if(autoName)
-        slot = tou16(GetDate(FORMAT_YMD));
+	
+	hidScanInput();
+	u32 held = hidKeysHeld();
+	
+	if((held & KEY_R) || (held & KEY_L))
+		slot = tou16(GetSlot(true, dat, mode).c_str());
     else
-        slot = tou16(GetSlot(true, dat, mode).c_str());
+		slot = tou16(GetDate(FORMAT_YMD));
 
     if(slot.data()[0]==0)
         return false;

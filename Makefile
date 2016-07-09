@@ -143,8 +143,8 @@ cci: $(TARGET)-strip.elf
 	@makerom -f cci -rsf $(TARGET).rsf -target d -exefslogo -elf $(OUTPUT)-strip.elf -o $(TARGET).3ds
 #---------------------------------------------------------------------------------
 cia: $(TARGET)-strip.elf
-	@makerom -f cia -o $(OUTPUT).cia -elf $(OUTPUT)-strip.elf -rsf $(TARGET).rsf -exefslogo -target t -icon icon -banner banner
-	@echo Built JKSM.cia
+	@makerom.exe -f cia -o $(OUTPUT).cia -elf $(OUTPUT)-strip.elf -rsf $(TARGET).rsf -exefslogo -target t -icon icon -banner banner
+	@echo Built JKSMK.cia
 #---------------------------------------------------------------------------------
 send: $(BUILD)
 	@3dslink $(OUTPUT).3dsx
