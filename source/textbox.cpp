@@ -37,7 +37,7 @@ void textbox::draw(bool Pressed)
     float xScale, yScale;
 
     xScale = (float)((Width + 40) / 16);
-    yScale = (float)((Height + 32) / 16);
+    yScale = (float)((Height) / 16);
 
     sf2d_texture *UseTex;
 
