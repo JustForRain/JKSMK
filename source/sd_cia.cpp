@@ -91,7 +91,8 @@ void sdStartSelect()
 enum
 {
     _expSav,
-    _impSav
+    _impSav,
+	_delSav
 };
 
 void sdBackupMenu(const titleData dat)
@@ -99,6 +100,7 @@ void sdBackupMenu(const titleData dat)
     menu backupMenu(128, 80, false);
     backupMenu.addItem("Export Save");
     backupMenu.addItem("Import Save");
+    backupMenu.addItem("Delete Save");
 
     bool loop = true;
 
@@ -126,6 +128,13 @@ void sdBackupMenu(const titleData dat)
 						break;
 					case _impSav:
 						restoreData(dat, archive, MODE_SAVE);
+						break;
+					case _delSav:
+						if(confirm("Are you sure you want to delete this title's save data?"))
+						{
+							FSUSER_DeleteDirectoryRecursively(archive, fsMakePath(PATH_ASCII, "/"));
+							FSUSER_ControlArchive(archive, ARCHIVE_ACTION_COMMIT_SAVE_DATA, NULL, 0, NULL, 0);
+						}
 						break;
 				}
 				
