@@ -100,7 +100,7 @@ void sysInit()
     Result Res = FSUSER_OpenArchive(&sdArch, ARCHIVE_SDMC, fsMakePath(PATH_EMPTY, ""));
     if(Res)
     {
-        showMessage("Error opening SDMC archive!");
+        showMessage("Error opening SDMC archive!", "Error!");
     }
 
     //Create output directories

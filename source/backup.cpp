@@ -18,14 +18,14 @@ void copyFileToSD(FS_Archive save, const std::u16string from, const std::u16stri
     Result res = FSUSER_OpenFile(&saveFile, save, fsMakePath(PATH_UTF16, from.data()), FS_OPEN_READ, 0);
     if(res)
     {
-        showMessage("Error opening save file for reading!");
+        showMessage("Failed to open Save Archive!", "Error!");
         return;
     }
 
     res = FSUSER_OpenFile(&sdFile, sdArch, fsMakePath(PATH_UTF16, to.data()), FS_OPEN_CREATE | FS_OPEN_WRITE, 0);
     if(res)
     {
-        showMessage("Error creating/opening SD file!");
+        showMessage("Failed to create/open SD file!", "Error!");
         return;
     }
 
@@ -61,12 +61,6 @@ void copyFileToSD(FS_Archive save, const std::u16string from, const std::u16stri
         res = FSFILE_Read(saveFile, &read, offset, buff, buff_size);
         if(res==0 || ignoreError)
         {
-            if(devMode && ignoreError)
-            {
-                char mess[256];
-                sprintf(mess, "FSFILE_Read reported %u bytes read.", (unsigned)read);
-                showMessage(mess);
-            }
             FSFILE_Write(sdFile, NULL, offset, buff, read, FS_WRITE_FLUSH);
             offset += read;
         }
@@ -171,7 +165,7 @@ bool backupData(const titleData dat, FS_Archive arch, int mode, bool autoName)
 
     //This gets annoying in auto mode
     if(!autoName)
-        showMessage("Complete!");
+        showMessage("Successfully exported all Save Files.", "Success!");
 
     return true;
 }

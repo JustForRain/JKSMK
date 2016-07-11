@@ -30,7 +30,7 @@ void copyFiletoArch(FS_Archive arch, const std::u16string from, const std::u16st
             chk = FSUSER_CreateFile(arch, fsMakePath(PATH_UTF16, to.data()), 0, size);
             if(chk)
             {
-                showMessage("Error creating extData file!");
+                showMessage("Failed to creating extData file!", "Error!");
             }
             else
             {
@@ -131,11 +131,12 @@ bool restoreData(const titleData dat, FS_Archive arch, int mode)
         Result res = FSUSER_ControlArchive(arch, ARCHIVE_ACTION_COMMIT_SAVE_DATA, NULL, 0, NULL, 0);
         if(res)
         {
-            showMessage("Error committing save data!");
+            showMessage("Failed to restore Save Archive!", "Error!");
         }
     }
-
-    showMessage("Complete!");
+	
+	std::string success = "Restored " + keepName + "!";
+    showMessage(success.c_str(), "Success!");
 
     return true;
 }
@@ -156,7 +157,7 @@ bool restoreDataSDPath(const titleData dat, FS_Archive arch, int mode)
     if(!modeExtdata(mode))
         FSUSER_ControlArchive(arch, ARCHIVE_ACTION_COMMIT_SAVE_DATA, NULL, 0, NULL, 0);
 
-    showMessage("Complete!");
+    showMessage("Restored Save File!", "Success!");
 
     return true;
 }

@@ -22,7 +22,7 @@ bool openSaveArch3dsx(FS_Archive *arch)
     Result res = FSUSER_OpenArchive(arch, ARCHIVE_SAVEDATA, fsMakePath(PATH_EMPTY, ""));
     if(res)
     {
-        showMessage("Error opening save archive!");
+        showMessage("Failed to open Save Archive!", "Error!");
         return false;
     }
 

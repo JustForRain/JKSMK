@@ -14,7 +14,7 @@ std::string GetString()
 {
     //this object takes care of a lot
     KeyBoard Str;
-    textbox Back(0, 0, 320, 240, "");
+    textbox Back(0, 0, 320, 240, "", "");
 
     bool Loop = true;
 

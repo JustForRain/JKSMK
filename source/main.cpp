@@ -107,8 +107,8 @@ int main(int argc, const char * argv[])
 
 							FSUSER_CloseArchive(shared);
 							
-							showMessage("You now have 300 Play Coins!");
-						} else { showMessage("Error!"); }
+							showMessage("You now have 300 Play Coins!", "Success!");
+						} else { showMessage("Failed to edit Play Coin's Save Data!", "Error!"); }
 						break;
 						
                     case _refresh:

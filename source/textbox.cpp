@@ -26,10 +26,11 @@ void textboxExit()
     sf2d_free_texture(tex_boxbar);
 }
 
-textbox::textbox(unsigned x, unsigned y, unsigned width, unsigned height, const char *text)
+textbox::textbox(unsigned x, unsigned y, unsigned width, unsigned height, const char *maint, const char *titlet)
 {
-    Text.assign(text);
-
+    TitleT.assign(titlet);
+    MainT.assign(maint);
+	
     X = x;
     Y = y;
     Width = width;
@@ -40,7 +41,7 @@ void textbox::draw(bool Pressed, bool isButton)
 {
 	
     float xScale, yScale;
-	unsigned color, textwidth, textheight;
+	unsigned textwidth;
 	
     xScale = (float)((Width) / 16);
     yScale = (float)((Height) / 16);
@@ -56,15 +57,28 @@ void textbox::draw(bool Pressed, bool isButton)
 		texture = tex_buttondown;
 	}
 	
-	//Draw the TextBox's Background and TextBox's Bar;
+	//Draw the Box's Background;
 	sf2d_draw_texture_part_scale(texture, X, Y, 16, 16, 16, 16, xScale, yScale);
-	if(!isButton) { sf2d_draw_texture_part_scale(tex_boxbar, X, Y, 16, 16, 16, 24, xScale, 1); }
 	
-	//If it's not a Button, Use White Text and a smaller Y-axis height. If it is a Button, Use Black Text and a larger Y-axis height;
-	if(!isButton) { color = RGBA8(255, 255, 255, 255); textheight = 4; } else { color = RGBA8(0, 0, 0, 255); textheight = 8; }
-	
-	//Draw the Text;
-	textwidth = sftd_get_text_width(font, 12, Text.c_str());
-	sftd_draw_text(font, X + ((Width - textwidth) / 2), Y + textheight, color, 12, Text.c_str());
+	//If it's not a Button;
+	if(!isButton) {
+		
+		//Draw the Box's Bar;
+		sf2d_draw_texture_part_scale(tex_boxbar, X, Y, 16, 16, 16, 24, xScale, 1);
+		
+		//Draw the Box's Title Text;
+		sftd_draw_text(font, X + 8, Y + 4, RGBA8(255, 255, 255, 255), 12, TitleT.c_str());
+		
+		//Draw the Text;
+		textwidth = sftd_get_text_width(font, 12, MainT.c_str());
+		sftd_draw_text(font, X + ((Width - textwidth) / 2), Y + ((Height - 12) / 3), RGBA8(255, 255, 255, 255), 12, MainT.c_str());
+		
+	} else {
+		
+		//Draw the Text;
+		textwidth = sftd_get_text_width(font, 12, MainT.c_str());
+		sftd_draw_text(font, X + ((Width - textwidth) / 2), Y + 8, RGBA8(0, 0, 0, 255), 12, MainT.c_str());
+		
+	}
 	
 }

@@ -15,7 +15,7 @@ bool confirm(const char *t)
 
     button yes("Yes", 40, 176);
     button no("No", 180, 176);
-    textbox back(24, 24, 280, 200, t);
+    textbox back(24, 24, 280, 200, t, "");
     while(true)
     {
         hidScanInput();
@@ -50,10 +50,10 @@ bool confirm(const char *t)
     return ret;
 }
 
-void showMessage(const char *t)
+void showMessage(const char *maint, const char *titlet)
 {
     button ok("OK", 116, 136);
-    textbox back(0, 60, 320, 140, t);
+    textbox back(0, 60, 320, 140, maint, titlet);
 
     while(true)
     {
@@ -94,7 +94,7 @@ void progressBarExit()
 
 progressBar::progressBar(float _max, const char *t)
 {
-    back = new textbox(0, 60, 320, 140, t);
+    back = new textbox(0, 60, 320, 140, "", t);
     max = _max;
 }
 

@@ -92,7 +92,7 @@ void cartManager()
     FSUSER_CardSlotIsInserted(&cartInserted);
     if(!cartInserted)
     {
-        showMessage("No cartridge inserted!");
+        showMessage("No cartridge inserted!", "Error!");
         return;
     }
 
@@ -101,7 +101,7 @@ void cartManager()
     FSUSER_GetCardType(&type);
     if(type!=CARD_CTR)
     {
-        showMessage("No DS support yet.");
+        showMessage("No DS support yet.", "Error!");
         return;
     }
 
@@ -113,18 +113,8 @@ void cartManager()
     titleData cartData;
     if(!cartData.init(cartID, MEDIATYPE_GAME_CARD))
     {
-        showMessage("Error getting info for cart!");
+        showMessage("Failed to get info for cart!", "Error!");
         return;
-    }
-
-    if(gatewayMode)
-    {
-        bool copied = gatewayCopy(cartData);
-        if(!copied)
-        {
-            showMessage("Couldn't find Gateway sav file!");
-            return;
-        }
     }
 
     //top bar info

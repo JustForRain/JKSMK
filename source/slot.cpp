@@ -126,7 +126,7 @@ std::string GetSlot(bool nSlot, const titleData dat, int Mode)
         }
         else if(help.released(pos))
         {
-            showMessage(helpText.c_str());
+            showMessage(helpText.c_str(), "Help...");
         }
         else if(KeyUp & KEY_B)
         {

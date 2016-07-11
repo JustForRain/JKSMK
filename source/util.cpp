@@ -90,7 +90,7 @@ void deleteSV(const titleData t)
     Result res = FSUSER_ControlSecureSave(SECURESAVE_ACTION_DELETE, &in, 8, &out, 1);
     if(res)
     {
-        showMessage("Failed to delete secure value!");
+        showMessage("Failed to delete secure value!", "Error!");
     }
 }
 
@@ -139,7 +139,7 @@ void deleteExtdata(const titleData dat)
     Result res = FSUSER_DeleteExtSaveData(del);
     if(res)
     {
-        showMessage("Error deleting ExtData!");
+        showMessage("Error deleting ExtData!", "Error!");
     }
 }
 
@@ -157,10 +157,10 @@ void createExtData(const titleData dat)
     {
         char error[256];
         sprintf(error, "Error creating extData! 0x%08X.", (unsigned)res);
-        showMessage(error);
+        showMessage(error, "Error!");
     }
     else
-        showMessage("ExtData created successfully!");
+        showMessage("ExtData created successfully!", "Success!");
 
     delete tempSmdh;
 }

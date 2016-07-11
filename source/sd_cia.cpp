@@ -59,7 +59,7 @@ void sdStartSelect()
         }
         else if(help.released(pos))
         {
-            showMessage(helpText.c_str());
+            showMessage(helpText.c_str(), "Help...");
         }
         else if(up & KEY_Y)
         {

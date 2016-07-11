@@ -6,13 +6,14 @@
 class textbox
 {
     public:
-        textbox(unsigned x, unsigned y, unsigned width, unsigned height, const char *text);
+        textbox(unsigned x, unsigned y, unsigned width, unsigned height, const char *maint, const char *titlet);
         void draw(bool Pressed, bool isButton);
 
         unsigned X, Y;
     protected:
         unsigned Width, Height;
-        std::string Text;
+        std::string MainT;
+        std::string TitleT;
 };
 
 void textboxInit();
