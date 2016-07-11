@@ -52,8 +52,8 @@ bool confirm(const char *t)
 
 void showMessage(const char *t)
 {
-    button ok("OK (A)", 116, 176);
-    textbox back(24, 24, 280, 200, t);
+    button ok("OK (A)", 116, 136);
+    textbox back(0, 60, 320, 140, t);
 
     while(true)
     {
@@ -94,7 +94,7 @@ void progressBarExit()
 
 progressBar::progressBar(float _max, const char *t)
 {
-    back = new textbox(24, 24, 280, 200, t);
+    back = new textbox(0, 60, 320, 140, t);
     max = _max;
 }
 
