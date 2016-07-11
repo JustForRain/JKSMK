@@ -65,6 +65,14 @@ extern "C"
         unsigned int bytes_per_pixel;
         unsigned char pixel_data[];
     } tex_button_img;
+	
+	extern const struct
+    {
+        unsigned int width;
+        unsigned int height;
+        unsigned int bytes_per_pixel;
+        unsigned char pixel_data[];
+    } tex_buttondown_img;
 
     extern const struct
     {

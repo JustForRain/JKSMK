@@ -8,12 +8,13 @@
 #include "textbox.h"
 #include "img.h"
 
-sf2d_texture *tbox, *tex_button, *tex_boxbar;
+sf2d_texture *tbox, *tex_button, *tex_buttondown, *tex_boxbar;
 
 void textboxInit()
 {
     tbox = sf2d_create_texture_mem_RGBA8(tbox_img.pixel_data, tbox_img.width, tbox_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
     tex_button = sf2d_create_texture_mem_RGBA8(tex_button_img.pixel_data, 48, 48, TEXFMT_RGBA8, SF2D_PLACE_RAM);
+    tex_buttondown = sf2d_create_texture_mem_RGBA8(tex_buttondown_img.pixel_data, 48, 48, TEXFMT_RGBA8, SF2D_PLACE_RAM);
     tex_boxbar = sf2d_create_texture_mem_RGBA8(tex_boxbar_img.pixel_data, 48, 48, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 }
 
@@ -21,6 +22,8 @@ void textboxExit()
 {
     sf2d_free_texture(tbox);
     sf2d_free_texture(tex_button);
+    sf2d_free_texture(tex_buttondown);
+    sf2d_free_texture(tex_boxbar);
 }
 
 textbox::textbox(unsigned x, unsigned y, unsigned width, unsigned height, const char *text)
@@ -50,7 +53,7 @@ void textbox::draw(bool Pressed, bool isButton)
 	} else if(isButton && !Pressed) {
 		texture = tex_button;
 	} else if(isButton && Pressed) {
-		texture = tbox;
+		texture = tex_buttondown;
 	}
 	
 	//Draw the TextBox's Background and TextBox's Bar;
