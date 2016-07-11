@@ -107,7 +107,7 @@ int main(int argc, const char * argv[])
 
 							FSUSER_CloseArchive(shared);
 							
-							showMessage("Complete!");
+							showMessage("You now have 300 Play Coins!");
 						} else { showMessage("Error!"); }
 						break;
 						

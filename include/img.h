@@ -49,6 +49,14 @@ extern "C"
         unsigned int bytes_per_pixel;
         unsigned char pixel_data[];
     } tbox_img;
+	
+	extern const struct
+    {
+        unsigned int width;
+        unsigned int height;
+        unsigned int bytes_per_pixel;
+        unsigned char pixel_data[];
+    } tex_boxbar_img;
 
     extern const struct
     {
@@ -56,7 +64,7 @@ extern "C"
         unsigned int height;
         unsigned int bytes_per_pixel;
         unsigned char pixel_data[];
-    } tboxdown_img;
+    } tex_button_img;
 
     extern const struct
     {
@@ -64,7 +72,7 @@ extern "C"
         unsigned int height;
         unsigned int bytes_per_pixel;
         unsigned char pixel_data[];
-    } pbar_empty;
+    } tex_progress_empty;
 
     extern const struct
     {
@@ -72,7 +80,7 @@ extern "C"
         unsigned int height;
         unsigned int bytes_per_pixel;
         unsigned char pixel_data[];
-    } pbar_full;
+    } tex_progress_full;
 
     extern const struct
     {

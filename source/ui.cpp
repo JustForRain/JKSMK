@@ -13,8 +13,8 @@ bool confirm(const char *t)
 {
     bool ret = false;
 
-    button yes("Yes (A)", 40, 176);
-    button no("No (B)", 180, 176);
+    button yes("Yes", 40, 176);
+    button no("No", 180, 176);
     textbox back(24, 24, 280, 200, t);
     while(true)
     {
@@ -39,7 +39,7 @@ bool confirm(const char *t)
         killApp(up);
 
         sf2d_start_frame(GFX_BOTTOM, GFX_LEFT);
-            back.draw(false);
+            back.draw(false,false);
             yes.draw();
             no.draw();
         sf2d_end_frame();
@@ -52,7 +52,7 @@ bool confirm(const char *t)
 
 void showMessage(const char *t)
 {
-    button ok("OK (A)", 116, 136);
+    button ok("OK", 116, 136);
     textbox back(0, 60, 320, 140, t);
 
     while(true)
@@ -70,7 +70,7 @@ void showMessage(const char *t)
         killApp(up);
 
         sf2d_start_frame(GFX_BOTTOM, GFX_LEFT);
-            back.draw(false);
+            back.draw(false,false);
             ok.draw();
         sf2d_end_frame();
 
@@ -82,8 +82,8 @@ sf2d_texture *progEmpty, *progFull;
 
 void progressBarInit()
 {
-    progEmpty = sf2d_create_texture_mem_RGBA8(pbar_empty.pixel_data, pbar_empty.width, pbar_empty.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
-    progFull = sf2d_create_texture_mem_RGBA8(pbar_full.pixel_data, pbar_full.width, pbar_full.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
+    progEmpty = sf2d_create_texture_mem_RGBA8(tex_progress_empty.pixel_data, tex_progress_empty.width, tex_progress_empty.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
+    progFull = sf2d_create_texture_mem_RGBA8(tex_progress_full.pixel_data, tex_progress_full.width, tex_progress_full.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 }
 
 void progressBarExit()
@@ -108,7 +108,7 @@ void progressBar::draw(float cur)
     float prog = (float)(cur / max) * 100;
     float xScale = (float)(prog * 128) / 100;
 
-    back->draw(false);
-    sf2d_draw_texture_scale(progEmpty, back->X + 8, back->Y + 168, 128, 1);
-    sf2d_draw_texture_scale(progFull, back->X + 8, back->Y + 168, xScale, 1);
+    back->draw(false,false);
+    sf2d_draw_texture_scale(progEmpty, back->X + 16, back->Y + 40, 144, 4.5);
+    sf2d_draw_texture_scale(progFull, back->X + 16, back->Y + 40, xScale + 16, 4.5);
 }

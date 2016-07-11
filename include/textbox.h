@@ -7,7 +7,7 @@ class textbox
 {
     public:
         textbox(unsigned x, unsigned y, unsigned width, unsigned height, const char *text);
-        void draw(bool Pressed);
+        void draw(bool Pressed, bool isButton);
 
         unsigned X, Y;
     protected:

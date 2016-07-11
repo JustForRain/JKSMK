@@ -8,18 +8,19 @@
 #include "textbox.h"
 #include "img.h"
 
-sf2d_texture *tbox, *tboxdown;
+sf2d_texture *tbox, *tex_button, *tex_boxbar;
 
 void textboxInit()
 {
     tbox = sf2d_create_texture_mem_RGBA8(tbox_img.pixel_data, tbox_img.width, tbox_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
-    tboxdown = sf2d_create_texture_mem_RGBA8(tboxdown_img.pixel_data, 48, 48, TEXFMT_RGBA8, SF2D_PLACE_RAM);
+    tex_button = sf2d_create_texture_mem_RGBA8(tex_button_img.pixel_data, 48, 48, TEXFMT_RGBA8, SF2D_PLACE_RAM);
+    tex_boxbar = sf2d_create_texture_mem_RGBA8(tex_boxbar_img.pixel_data, 48, 48, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 }
 
 void textboxExit()
 {
     sf2d_free_texture(tbox);
-    sf2d_free_texture(tboxdown);
+    sf2d_free_texture(tex_button);
 }
 
 textbox::textbox(unsigned x, unsigned y, unsigned width, unsigned height, const char *text)
@@ -32,25 +33,35 @@ textbox::textbox(unsigned x, unsigned y, unsigned width, unsigned height, const 
     Height = height;
 }
 
-void textbox::draw(bool Pressed)
+void textbox::draw(bool Pressed, bool isButton)
 {
+	
     float xScale, yScale;
+	unsigned color, textwidth, textheight;
 	
     xScale = (float)((Width) / 16);
     yScale = (float)((Height) / 16);
 	
-    sf2d_texture *UseTex;
-	
-    if(Pressed)
-        UseTex = tboxdown;
-    else
-        UseTex = tbox;
+	sf2d_texture *texture;
 	
 	//Draw the TextBox's Background;
-    sf2d_draw_texture_part_scale(UseTex, X, Y, 16, 16, 16, 16, xScale, yScale);
-	//sf2d_draw_texture_part_scale(tboxdown, X, Y, 16, 16, 16, 32, xScale, 1);
-
+	if(!isButton) {
+		texture = tbox;
+	} else if(isButton && !Pressed) {
+		texture = tex_button;
+	} else if(isButton && Pressed) {
+		texture = tbox;
+	}
+	
+	//Draw the TextBox's Background and TextBox's Bar;
+	sf2d_draw_texture_part_scale(texture, X, Y, 16, 16, 16, 16, xScale, yScale);
+	if(!isButton) { sf2d_draw_texture_part_scale(tex_boxbar, X, Y, 16, 16, 16, 24, xScale, 1); }
+	
+	//If it's not a Button, Use White Text and a smaller Y-axis height. If it is a Button, Use Black Text and a larger Y-axis height;
+	if(!isButton) { color = RGBA8(255, 255, 255, 255); textheight = 4; } else { color = RGBA8(0, 0, 0, 255); textheight = 8; }
+	
 	//Draw the Text;
-    sftd_draw_text_wrap(font, X + 8, Y + 8, RGBA8(255, 255, 255, 255), 12, (X + Width) - 8, Text.c_str());
+	textwidth = sftd_get_text_width(font, 12, Text.c_str());
+	sftd_draw_text(font, X + ((Width - textwidth) / 2), Y + textheight, color, 12, Text.c_str());
 	
 }

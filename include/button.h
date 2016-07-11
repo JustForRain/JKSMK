@@ -18,6 +18,7 @@ class button
 
     private:
         bool Pressed;
+		bool isButton;
         int X, Y;
         textbox *Box;
         touchPosition Prev;

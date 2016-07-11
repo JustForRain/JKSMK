@@ -18,6 +18,7 @@ button::button(const char * sText, int sX, int sY)
     Y = sY;
 
     Pressed = false;
+	isButton = true;
 }
 
 button::~button()
@@ -27,7 +28,7 @@ button::~button()
 
 void button::draw()
 {
-    Box->draw(Pressed);
+    Box->draw(Pressed, isButton);
 }
 
 //This checks whether the stylus is inside the button
