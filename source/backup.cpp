@@ -70,7 +70,7 @@ void copyFileToSD(FS_Archive save, const std::u16string from, const std::u16stri
             sprintf(tmp, "FSFILE_Read returned error 0x%08X on '%s'. Would you like to ignore it and try anyway? Ignoring it CAN crash this program!", (unsigned)res, toString(from).c_str());
             std::string error = tmp;
             evenString(&error);
-            ignoreError = confirm(error.c_str());
+            ignoreError = confirm(error.c_str(), "Error!");
             if(!ignoreError)
             {
                 FSFILE_Close(sdFile);

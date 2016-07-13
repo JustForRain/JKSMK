@@ -108,10 +108,10 @@ bool restoreData(const titleData dat, FS_Archive arch, int mode)
     if(keepName=="")
         return false;
 
-    std::string ask = "Really restore " + keepName + "?";
+    std::string ask = "Are you sure you want to Import " + keepName + "?";
     evenString(&ask);
 
-    if(!confirm(ask.c_str()))
+    if(!confirm(ask.c_str(), "Import Save..."))
         return false;
 
     sdPath = getPath(mode) + dat.nameSafe + (char16_t)'/' + tou16(keepName.c_str()) + (char16_t)'/';

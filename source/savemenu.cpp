@@ -56,7 +56,7 @@ void startSaveMenu(FS_Archive saveArch, const titleData dat)
                     restoreData(dat, saveArch, MODE_SAVE);
                     break;
 				case _delSav:
-                    if(confirm("Are you sure you want to delete this title's save data?"))
+                    if(confirm("Are you sure you want to delete this title's save data?", "Delete Save..."))
                     {
                         FSUSER_DeleteDirectoryRecursively(saveArch, fsMakePath(PATH_ASCII, "/"));
                         FSUSER_ControlArchive(saveArch, ARCHIVE_ACTION_COMMIT_SAVE_DATA, NULL, 0, NULL, 0);

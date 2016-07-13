@@ -88,7 +88,7 @@ std::u16string getSDPath()
             upDir(&sdList, &sdBrowse, &cPath);
         else if(up & KEY_Y)
         {
-            if(sdList.isDir(sdBrowse.getSelected() - 1) && confirm("Use this directory to restore? Everything in it will be copied to current game's save archive. "))
+            if(sdList.isDir(sdBrowse.getSelected() - 1) && confirm("Use this directory to restore? Everything in it will be copied to current game's save archive.", "Save Directory..."))
             {
                 cPath += sdList.retItem(sdBrowse.getSelected() - 1);
                 cPath += L'/';

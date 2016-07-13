@@ -71,7 +71,7 @@ void textbox::draw(bool Pressed, bool isButton)
 		
 		//Draw the Text;
 		textwidth = sftd_get_text_width(font, 12, MainT.c_str());
-		sftd_draw_text(font, X + ((Width - textwidth) / 2), Y + ((Height - 12) / 3), RGBA8(255, 255, 255, 255), 12, MainT.c_str());
+		sftd_draw_text_wrap(font, X + ((Width - textwidth) / 2), Y + ((Height - 12) / 3), RGBA8(255, 255, 255, 255), 12, Width - 16, MainT.c_str());
 		
 	} else {
 		

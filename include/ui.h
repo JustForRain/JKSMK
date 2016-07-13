@@ -4,7 +4,7 @@
 #include <string>
 #include "textbox.h"
 
-bool confirm(const char *t);
+bool confirm(const char *maint, const char *titlet);
 void showMessage(const char *maint, const char *titlet);
 
 class progressBar

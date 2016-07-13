@@ -52,7 +52,7 @@ std::string GetSlot(bool nSlot, const titleData dat, int Mode)
 
     bool Loop = true;
     std::u32string info = tou32(dat.name) + modeText(Mode);
-    std::string helpText = "Select a Folder. Press X to rename, Y to delete, and B to cancel.";
+    std::string helpText = "Press X to rename or Y to delete.";
     while(Loop && !kill)
     {
         hidScanInput();
@@ -80,7 +80,7 @@ std::string GetSlot(bool nSlot, const titleData dat, int Mode)
         {
             unsigned Sel = getSlot.getSelected();
 
-            if(confirm("Delete selected save folder?") && Sel<list.count())
+            if(confirm("Are you sure you want to Delete this Save Folder?", "Delete Save Folder...") && Sel<list.count())
             {
                 std::u16string delPath = Path;
                 delPath += list.retItem(Sel);

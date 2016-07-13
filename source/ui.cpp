@@ -9,13 +9,13 @@
 #include "img.h"
 #include "global.h"
 
-bool confirm(const char *t)
+bool confirm(const char *maint, const char *titlet)
 {
     bool ret = false;
 
-    button yes("Yes", 40, 176);
-    button no("No", 180, 176);
-    textbox back(24, 24, 280, 200, t, "");
+    button yes("Yes", 40, 136);
+    button no("No", 180, 136);
+    textbox back(0, 60, 320, 140, maint, titlet);
     while(true)
     {
         hidScanInput();

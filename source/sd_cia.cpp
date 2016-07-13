@@ -36,7 +36,7 @@ void sdStartSelect()
     std::u32string info = U"Select a title";
 
     //help text for help button
-    std::string helpText = "Press L to select multiple. Press R to select all. Press Y to backup selected. Press X to restore selected.";
+    std::string helpText = "Press L to select multiple, R to select all. Press Y to export or X to import selected titles.";
 
     //Help button
     button help("Help", 224, 208);
@@ -130,7 +130,7 @@ void sdBackupMenu(const titleData dat)
 						restoreData(dat, archive, MODE_SAVE);
 						break;
 					case _delSav:
-						if(confirm("Are you sure you want to delete this title's save data?"))
+						if(confirm("Are you sure you want to delete this title's save data?", "Delete Save..."))
 						{
 							FSUSER_DeleteDirectoryRecursively(archive, fsMakePath(PATH_ASCII, "/"));
 							FSUSER_ControlArchive(archive, ARCHIVE_ACTION_COMMIT_SAVE_DATA, NULL, 0, NULL, 0);
