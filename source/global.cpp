@@ -16,9 +16,6 @@ FS_Archive sdArch;
 
 bool useTouch, _date;
 
-bool devMode = false;
-bool gatewayMode = false;
-
 bool kill = false;
 
 //default colors
