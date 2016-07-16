@@ -14,7 +14,7 @@
 #include "restore.h"
 #include "ui.h"
 #include "button.h"
-#include "textbox.h"
+#include "box.h"
 #include "auto.h"
 #include "slot.h"
 #include "savemenu.h"

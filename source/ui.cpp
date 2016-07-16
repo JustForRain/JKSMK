@@ -4,7 +4,7 @@
 #include <string>
 
 #include "ui.h"
-#include "textbox.h"
+#include "box.h"
 #include "button.h"
 #include "img.h"
 #include "global.h"
@@ -15,7 +15,7 @@ bool confirm(const char *maint, const char *titlet)
 
     button yes("Yes", 40, 136);
     button no("No", 180, 136);
-    textbox back(0, 60, 320, 140, maint, titlet);
+    box back(0, 60, 320, 140, maint, titlet);
     while(true)
     {
         hidScanInput();
@@ -53,7 +53,7 @@ bool confirm(const char *maint, const char *titlet)
 void showMessage(const char *maint, const char *titlet)
 {
     button ok("OK", 116, 136);
-    textbox back(0, 60, 320, 140, maint, titlet);
+    box back(0, 60, 320, 140, maint, titlet);
 
     while(true)
     {
@@ -94,7 +94,7 @@ void progressBarExit()
 
 progressBar::progressBar(float _max, const char *t)
 {
-    back = new textbox(0, 60, 320, 140, "", t);
+    back = new box(0, 60, 320, 140, "", t);
     max = _max;
 }
 

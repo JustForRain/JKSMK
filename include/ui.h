@@ -2,7 +2,7 @@
 #define UI_H
 
 #include <string>
-#include "textbox.h"
+#include "box.h"
 
 bool confirm(const char *maint, const char *titlet);
 void showMessage(const char *maint, const char *titlet);
@@ -15,7 +15,7 @@ class progressBar
         void draw(float cur);
 
     private:
-        textbox *back;
+        box *back;
         float max;
 };
 

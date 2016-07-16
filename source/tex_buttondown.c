@@ -1,11 +1,9 @@
-/* GIMP RGBA C-Source image dump (tex_buttondown.c) */
-
 const struct {
   unsigned int 	 width;
   unsigned int 	 height;
-  unsigned int 	 bytes_per_pixel; /* 2:RGB16, 3:RGB, 4:RGBA */
+  unsigned int 	 bytes_per_pixel;
   unsigned char	 pixel_data[48 * 48 * 4 + 1];
-} tex_buttondown_img = {
+} tex_buttondown = {
   48, 48, 4,
   "\316\316\316\377\316\316\316\377\316\316\316\377\316\316\316\377\316\316"
   "\316\377\316\316\316\377\316\316\316\377\316\316\316\377\316\316\316\377"

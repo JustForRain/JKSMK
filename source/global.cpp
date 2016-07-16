@@ -10,7 +10,6 @@
 unsigned buff_size = 0x80000;
 
 sftd_font *font;
-
 sf2d_texture *bar;
 
 FS_Archive sdArch;
@@ -37,8 +36,8 @@ void drawTopBar(const std::u32string nfo)
     //nfo is wide text, UTF32
     sftd_draw_wtext(font, 5, 0, RGBA8(255, 255, 255, 255), 12, (wchar_t *)nfo.data());
 
-    //time
-    sftd_draw_text(font, 365, 0, RGBA8(255, 255, 255, 255), 12, RetTime().c_str());
+    //Time;
+    sftd_draw_text(font, 367, 0, RGBA8(255, 255, 255, 255), 12, RetTime().c_str());
 	
 }
 

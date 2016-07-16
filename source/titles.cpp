@@ -61,7 +61,7 @@ void sdTitlesInit()
             u32 high = (u32)(ids[i] >> 32);
             //0x00040000 = games
             //0x00040002 = demos
-            if( ((high==0x00040000 || high==0x00040002) && !hbFilter(ids[i])) || devMode)
+            if( ((high==0x00040000 || high==0x00040002) && !hbFilter(ids[i])))
             {
                 titleData newTitle;
                 if(newTitle.init(ids[i], MEDIATYPE_SD))
@@ -133,10 +133,10 @@ void nandTitlesInit()
         progressBar load((float)count, "Loading NAND titles...");
         for(unsigned i = 0; i < count; i++)
         {
-            if(!(nandFilter(ids[i]) && ids[i]!=0) || devMode)
+            if(!(nandFilter(ids[i]) && ids[i]!=0))
             {
                 titleData newData;
-                if( (newData.init(ids[i], MEDIATYPE_NAND) && newData.name[0]!=0) || devMode)
+                if( (newData.init(ids[i], MEDIATYPE_NAND) && newData.name[0]!=0))
                 {
                     sysSaveRedirect(&newData);
                     nandTitle.push_back(newData);

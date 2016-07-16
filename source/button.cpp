@@ -12,7 +12,7 @@ using namespace std;
 
 button::button(const char * sText, int sX, int sY)
 {
-    Box = new textbox(sX, sY, 96, 32, sText, "");
+    Box = new box(sX, sY, 96, 32, sText, "");
 
     X = sX;
     Y = sY;

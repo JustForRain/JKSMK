@@ -32,7 +32,7 @@ int main(int argc, const char * argv[])
     sysInit();
     hidScanInput();
 	
-    if(runningUnder() && !devMode) {
+    if(runningUnder()) {
 		start3dsxMode();
 	} else {
         sdTitlesInit();
@@ -41,10 +41,7 @@ int main(int argc, const char * argv[])
 		std::u32string info = U"JKSMK";
 		
         menu mainMenu(136, 80, false);
-        if(!gatewayMode)
-            mainMenu.addItem("Cartridge");
-        else
-            mainMenu.addItem("Gateway cart");
+        mainMenu.addItem("Cartridge");
         mainMenu.addItem("SD/CIA");
         mainMenu.addItem("Max Play Coins");
         mainMenu.addItem("Refresh");

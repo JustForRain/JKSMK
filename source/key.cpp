@@ -99,11 +99,11 @@ char Key::GetChar()
 
 KeyBoard::KeyBoard()
 {
-    KeyBack = sf2d_create_texture_mem_RGBA8(key_img.pixel_data, key_img.width, key_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
-    KeyBackDown = sf2d_create_texture_mem_RGBA8(key_img_down.pixel_data, key_img_down.width, key_img_down.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
+    KeyBack = sf2d_create_texture_mem_RGBA8(tex_key.pixel_data, tex_key.width, tex_key.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
+    KeyBackDown = sf2d_create_texture_mem_RGBA8(tex_keydown.pixel_data, tex_keydown.width, tex_keydown.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 
-    SpaceBack = sf2d_create_texture_mem_RGBA8(spc_img.pixel_data, spc_img.width, spc_img.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
-    SpaceBackDown = sf2d_create_texture_mem_RGBA8(spc_img_down.pixel_data, spc_img_down.width, spc_img_down.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
+    SpaceBack = sf2d_create_texture_mem_RGBA8(tex_space.pixel_data, tex_space.width, tex_space.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
+    SpaceBackDown = sf2d_create_texture_mem_RGBA8(tex_spacedown.pixel_data, tex_spacedown.width, tex_spacedown.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
     int cChar, X, Y;
     for(cChar = 0, X = 0, Y = 80; cChar < 40; cChar++, X += 32)
     {

@@ -32,57 +32,6 @@ bool openCart(FS_Archive *out, const titleData dat)
     return false;
 }
 
-bool gatewayCopy(const titleData dat)
-{
-    char path[32];
-    sprintf(path,"/%016llX.sav", dat.id);
-
-    FILE *save = fopen(path, "rb");
-    if(save==NULL)
-        return false;
-
-    fseek(save, 0, SEEK_END);
-    unsigned size = ftell(save);
-    fseek(save, 0, SEEK_SET);
-
-    u8 *buff = new u8[size];
-
-    fread(buff, 1, size, save);
-    fclose(save);
-
-    save = fopen("/0004000002C23200.sav", "wb");
-    fwrite(buff, 1, size, save);
-    fclose(save);
-
-    delete[] buff;
-
-    return true;
-}
-
-void gatewayCopyBack(const titleData dat)
-{
-    char path[32];
-    sprintf(path, "/%016llX.sav", dat.id);
-
-    FILE *save = fopen("/0004000002C23200.sav", "rb");
-
-    fseek(save, 0, SEEK_END);
-    unsigned size = ftell(save);
-    fseek(save, 0, SEEK_SET);
-
-    u8 *buff = new u8[size];
-
-    fread(buff, 1, size, save);
-    fclose(save);
-
-    save = fopen(path, "wb");
-    fwrite(buff, 1, size, save);
-    fclose(save);
-
-    delete[] buff;
-}
-
-
 extern std::string extDataConfirm;
 
 void cartManager()
@@ -116,59 +65,10 @@ void cartManager()
         showMessage("Failed to get info for cart!", "Error!");
         return;
     }
-
-    //top bar info
-    //wchar_t for 3ds is 32bit.
-    std::u32string info = tou32(cartData.name);
-    info += U" - Cart";
-
-    //menu
-    menu cartMenu(136, 64, false);
-    cartMenu.addItem("Save Data Options");
-
-    bool loop = true, importSave = false;
-
-    while(loop && !kill)
-    {
-        hidScanInput();
-
-        u32 up = hidKeysUp();
-
-        cartMenu.handleInput(up);
-
-        if(up & KEY_A)
-        {
-            FS_Archive archive;
-            switch(cartMenu.getSelected())
-            {
-                case _saveOpts:
-                    if(openCart(&archive, cartData))
-                        startSaveMenu(archive, cartData);
-                    break;
-            }
-            FSUSER_CloseArchive(archive);
-        }
-        else if(up & KEY_B)
-            break;
-
-        killApp(up);
-
-        sf2d_start_frame(GFX_TOP, GFX_LEFT);
-            cartMenu.draw();
-            drawTopBar(info);
-        sf2d_end_frame();
-
-        sf2d_start_frame(GFX_BOTTOM, GFX_LEFT);
-            cartData.printInfo();
-        sf2d_end_frame();
-
-        sf2d_swapbuffers();
-    }
-
-    //Copy gateway save back and clean up
-    if(gatewayMode && importSave)
-    {
-        gatewayCopyBack(cartData);
-        remove("/0004000002C23200.sav");
-    }
+	
+	FS_Archive archive;
+	if(openCart(&archive, cartData))
+		startSaveMenu(archive, cartData);
+	FSUSER_CloseArchive(archive);
+	
 }

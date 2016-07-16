@@ -8,7 +8,7 @@ extern "C"
         unsigned int height;
         unsigned int bytes_per_pixel;
         unsigned char pixel_data[];
-    } key_img;
+    } tex_key;
 
     extern const struct
     {
@@ -16,7 +16,7 @@ extern "C"
         unsigned int height;
         unsigned int bytes_per_pixel;
         unsigned char pixel_data[];
-    } key_img_down;
+    } tex_keydown;
 
     extern const struct
     {
@@ -24,7 +24,7 @@ extern "C"
         unsigned int height;
         unsigned int bytes_per_pixel;
         unsigned char pixel_data[];
-    } spc_img;
+    } tex_space;
 
     extern const struct
     {
@@ -32,7 +32,7 @@ extern "C"
         unsigned int height;
         unsigned int bytes_per_pixel;
         unsigned char pixel_data[];
-    } spc_img_down;
+    } tex_spacedown;
 
     extern const struct
     {
@@ -40,7 +40,7 @@ extern "C"
         unsigned int height;
         unsigned int bytes_per_pixel;
         unsigned char pixel_data[];
-    } TopBar;
+    } tex_bar;
 
     extern const struct
     {
@@ -48,7 +48,15 @@ extern "C"
         unsigned int height;
         unsigned int bytes_per_pixel;
         unsigned char pixel_data[];
-    } tbox_img;
+    } tex_box;
+
+    extern const struct
+    {
+        unsigned int width;
+        unsigned int height;
+        unsigned int bytes_per_pixel;
+        unsigned char pixel_data[];
+    } tex_button;
 	
 	extern const struct
     {
@@ -56,23 +64,7 @@ extern "C"
         unsigned int height;
         unsigned int bytes_per_pixel;
         unsigned char pixel_data[];
-    } tex_boxbar_img;
-
-    extern const struct
-    {
-        unsigned int width;
-        unsigned int height;
-        unsigned int bytes_per_pixel;
-        unsigned char pixel_data[];
-    } tex_button_img;
-	
-	extern const struct
-    {
-        unsigned int width;
-        unsigned int height;
-        unsigned int bytes_per_pixel;
-        unsigned char pixel_data[];
-    } tex_buttondown_img;
+    } tex_buttondown;
 
     extern const struct
     {
@@ -96,6 +88,6 @@ extern "C"
         unsigned int height;
         unsigned int bytes_per_pixel;
         unsigned char pixel_data[];
-    } arrow_img;
+    } tex_arrow;
 }
 #endif // IMG_H

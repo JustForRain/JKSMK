@@ -7,7 +7,7 @@
 #include "font_ttf.h"
 #include "img.h"
 #include "global.h"
-#include "textbox.h"
+#include "box.h"
 #include "ui.h"
 #include "menu.h"
 #include "util.h"
@@ -18,8 +18,8 @@ extern std::vector<u32> filterID;
 
 void loadImgs()
 {
-    bar = sf2d_create_texture_mem_RGBA8(TopBar.pixel_data, TopBar.width, TopBar.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
-    textboxInit();
+    bar = sf2d_create_texture_mem_RGBA8(tex_bar.pixel_data, tex_bar.width, tex_bar.height, TEXFMT_RGBA8, SF2D_PLACE_RAM);
+    boxInit();
     progressBarInit();
     loadArrow();
 }
@@ -27,7 +27,7 @@ void loadImgs()
 void freeImgs()
 {
     sf2d_free_texture(bar);
-    textboxExit();
+    boxExit();
     progressBarExit();
     freeArrow();
 }

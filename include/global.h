@@ -31,10 +31,6 @@ void drawTopBar(const std::u32string nfo);
 //Settings
 extern bool useTouch, _date;
 
-//Turns off filters and other stuff
-extern bool devMode;
-extern bool gatewayMode;
-
 //handles killing the app
 //this breaks every loop and allows
 //sysExit() to run at the end.

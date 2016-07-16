@@ -8,13 +8,13 @@
 #include "gstr.h"
 #include "global.h"
 #include "date.h"
-#include "textbox.h"
+#include "box.h"
 
 std::string GetString()
 {
     //this object takes care of a lot
     KeyBoard Str;
-    textbox Back(0, 0, 320, 240, "", "");
+    box Back(0, 0, 320, 240, "", "");
 
     bool Loop = true;
 

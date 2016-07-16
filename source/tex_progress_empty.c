@@ -1,9 +1,7 @@
-/* GIMP RGBA C-Source image dump (tex_progress_empty.c) */
-
 const struct {
   unsigned int 	 width;
   unsigned int 	 height;
-  unsigned int 	 bytes_per_pixel; /* 2:RGB16, 3:RGB, 4:RGBA */
+  unsigned int 	 bytes_per_pixel;
   unsigned char	 pixel_data[2 * 16 * 4 + 1];
 } tex_progress_empty = {
   2, 16, 4,
@@ -15,4 +13,3 @@ const struct {
   "\210\321\377\2\210\321\377\2\210\321\377\2\210\321\377\2\210\321\377\2\210"
   "\321\377",
 };
-

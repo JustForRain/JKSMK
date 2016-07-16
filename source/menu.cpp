@@ -14,7 +14,7 @@ sf2d_texture *arrow;
 
 void loadArrow()
 {
-    arrow = sf2d_create_texture_mem_RGBA8(arrow_img.pixel_data, 4, 10, TEXFMT_RGBA8, SF2D_PLACE_RAM);
+    arrow = sf2d_create_texture_mem_RGBA8(tex_arrow.pixel_data, 4, 10, TEXFMT_RGBA8, SF2D_PLACE_RAM);
 }
 
 void freeArrow()

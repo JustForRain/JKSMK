@@ -5,7 +5,7 @@
 #include <sf2d.h>
 #include <string>
 
-#include "textbox.h"
+#include "box.h"
 
 class button
 {
@@ -20,7 +20,7 @@ class button
         bool Pressed;
 		bool isButton;
         int X, Y;
-        textbox *Box;
+        box *Box;
         touchPosition Prev;
 };
 
