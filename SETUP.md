@@ -3,6 +3,8 @@
 - [FBI 2.0+](https://gbatemp.net/threads/release-fbi-open-source-cia-installer.386433)
 - WiFi/Mobile Hotspot **-OR-** [SD Card Reader Slot/Adapter](http://www.ehow.com/how_8404707_check-pc-sd-slot.html)
 
+---
+
 #### Wi-Fi/Mobile Hotspot Method
 - Load FBI and select "QR Code Install",
 - Let your 3DS Can the following QR Code...
