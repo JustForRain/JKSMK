@@ -20,4 +20,4 @@
 
 ---
 
-### You now have JKSMK installed, Press the Home button and enjoy!
+#### You now have JKSMK installed, Press the Home button and enjoy!
