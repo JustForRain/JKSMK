@@ -1,5 +1,5 @@
 #### How to Export game saves (GIF)
-![Usage](http://i.imgur.com/HcRDZ7z.gif)
+![Usage](https://i.imgur.com/HcRDZ7z.gif)
 ##### (Importing saves follow the same procedure)
 
 ---
