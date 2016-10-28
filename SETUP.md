@@ -1,5 +1,5 @@
 #### Requirements
-- [Hacked 3DS](https://www.reddit.com/r/3dshacks/wiki/index)
+- Hacked 3DS - [Information](https://www.reddit.com/r/3dshacks/wiki/index)/[Flowchart of hackable versions](https://docs.google.com/drawings/d/1FXjzMGg1KaMhJjxm5bH9UFh8bDDQ-hCPJAmGvhwMuQo)
 - [FBI 2.0+](https://gbatemp.net/threads/release-fbi-open-source-cia-installer.386433)
 - WiFi/Mobile Hotspot **-OR-** [SD Card Reader Slot/Adapter](http://www.ehow.com/how_8404707_check-pc-sd-slot.html)
 
